@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
+.Banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  object-fit: contain;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 0;
+}
+
+.Banner__contents {
+  box-sizing: border-box;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.Banner__header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 99999;
+}
+
+.Banner__header input {
+  width: 45%;
+  padding: 10px;
+  font-size: 1rem;
+  background: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+  cursor: pointer;
+  color: #fff;
+}
+
+.banner__fadeTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 7.4rem;
+  background-image: linear-gradient(
+    0deg,
+    transparent,
+    rgba(37, 37, 36, 0.61),
+    #111
+  );
+}
+
+.Banner__header input::placeholder {
+  color: #ccc;
+}
+
+.tmdb__logo {
+  width: 9rem;
+  height: 9rem;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.Banner__body {
+  background-color: #111;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  display: flex;
+  box-shadow: 0 0 8px #000;
+}
+
+.movie__img {
+  width: 35%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.movie__info {
+  width: 65%;
+  height: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 5px;
+  letter-spacing: 2px;
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+}
+
+.movie__info h2 {
+  color: #fff;
+  padding-bottom: 20px;
+}
+.movie__info h3 {
+  color: #00fc87;
+  font-weight: bolder;
+  font-size: 1.2rem;
+  padding-bottom: 5px;
+}
+.movie__info p {
+  color: #fff;
+}
+
+.additional__info {
+  box-sizing: border-box;
+  display: grid;
+  padding-top: 1.5rem;
+  grid-template-columns: auto auto;
+  color: white;
+}
+
+.additional__info div {
+  margin-right: 5px;
+}
