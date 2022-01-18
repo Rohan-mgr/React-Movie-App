@@ -8,7 +8,11 @@ function Footer() {
       <p>Designed & developed by Rohan Magar</p>
       <p>
         <BsGithub />{" "}
-        <a href="https://www.github.com" target="_blank" rel="noreferrer">
+        <a
+          href="https://github.com/Rohan-mgr/React-Movie-App"
+          target="_blank"
+          rel="noreferrer"
+        >
           View Code
         </a>
       </p>
