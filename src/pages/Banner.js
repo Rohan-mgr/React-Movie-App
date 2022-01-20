@@ -74,8 +74,8 @@ function Banner() {
         }}
       >
         <div className="banner__fadeTop"></div>
+        <div className="overlay"></div>
         <div className="Banner__contents">
-          <div className="overlay"></div>
           <div className="Banner__header">
             <img
               className="tmdb__logo"
