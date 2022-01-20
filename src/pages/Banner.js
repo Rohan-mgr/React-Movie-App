@@ -8,6 +8,7 @@ const baseUrl = "https://api.themoviedb.org/3/";
 const imgUrl = "https://image.tmdb.org/t/p/original/";
 function Banner() {
   const [movie, setMovie] = useState({});
+  const [searchResults, setSearchResults] = useState([]);
   useEffect(() => {
     async function fetchMovies() {
       let response = await axios.get(
@@ -24,7 +25,32 @@ function Banner() {
   function truncate(str, n) {
     return str?.length >= 150 ? str.substring(0, n - 1) + "..." : str;
   }
-  console.log(movie);
+
+  function handleParagraphClick(movie) {
+    setSearchResults([]);
+    document.getElementById("searchBox").value = movie.title;
+    axios
+      .get(`${baseUrl}movie/${movie.id}?&api_key=${tmdb_api}&language=en-Us`)
+      .then((res) => setMovie(res.data))
+      .catch((err) => console.log(err));
+  }
+
+  async function searchMovie(searchString) {
+    const response = await axios.get(
+      `${baseUrl}search/movie?api_key=${tmdb_api}&query=${searchString}&language=en-US`
+    );
+    // setMovie(response.data.results);
+    setSearchResults(response.data.results);
+  }
+
+  const handleSearchedMovie = (e) => {
+    if (e.target.value === "") {
+      setSearchResults([]);
+    } else {
+      searchMovie(e.target.value);
+    }
+  };
+
   function checkGenres(genreArray) {
     let genreList = genreArray?.map((num) => {
       return genres?.find((genre) => genre.id === num);
@@ -56,8 +82,24 @@ function Banner() {
               src="https://filmboard.mtu.edu/static/bucket/923aeb4a2b10f3e3cd793b3bde595df83c818cd5a4ea5d71486438f4b063c63ffa48fd6bc166ede140cd3d1f0a5e5c5db7388b63d1af96c9c69ebdce2c833acf.png"
               alt="tmdb-logo"
             />
-            <input type="text" placeholder="Search Movie Title..." />
+            <input
+              id="searchBox"
+              type="text"
+              onChange={(e) => handleSearchedMovie(e)}
+              placeholder="Search Movie Title..."
+            />
           </div>
+          {searchResults?.length !== 0 ? (
+            <div className="filter__searchItems">
+              {searchResults?.slice(0, 10).map((movie) => {
+                return (
+                  <p key={movie.id} onClick={() => handleParagraphClick(movie)}>
+                    {movie.title}
+                  </p>
+                );
+              })}
+            </div>
+          ) : null}
           <div className="Banner__body">
             <div
               className="movie__img"
