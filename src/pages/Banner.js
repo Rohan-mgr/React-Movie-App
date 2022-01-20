@@ -32,14 +32,15 @@ function Banner() {
     axios
       .get(`${baseUrl}movie/${movie.id}?&api_key=${tmdb_api}&language=en-Us`)
       .then((res) => setMovie(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        throw new Error(err);
+      });
   }
 
   async function searchMovie(searchString) {
     const response = await axios.get(
       `${baseUrl}search/movie?api_key=${tmdb_api}&query=${searchString}&language=en-US`
     );
-    // setMovie(response.data.results);
     setSearchResults(response.data.results);
   }
 
